@@ -10,7 +10,7 @@ const twoSum = (nums, target) => {
 
     nums.map((num, index) => {
         const potential = target - num;
-        if (Object.keys(dict).indexOf(potential.toString()) > -1 ) {
+        if (potential.toString() in dict ) {
             result.push(index);
             result.push(dict[potential]);
         } else {
