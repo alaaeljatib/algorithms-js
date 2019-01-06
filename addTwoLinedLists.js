@@ -1,4 +1,4 @@
-const LinkedList = require('./LinkedList');
+const LinkedList = require('./LinkedList').default;
 
 const addTwoLinkedList = (num1, num2) => {
     if (num1.head === null) {
@@ -45,7 +45,7 @@ const addTwoLinkedList = (num1, num2) => {
     if (carry > 0) {
         result.addNode(1);
     }
-    
+
     return result;
 }
 
