@@ -1,4 +1,4 @@
-const LinkedList = require('./LinkedList').default;
+const LinkedList = require('./LinkedList');
 
 const addTwoLinkedList = (num1, num2) => {
     if (num1.head === null) {
@@ -36,7 +36,7 @@ const addTwoLinkedList = (num1, num2) => {
 
         }
 
-        carry = currentValue > 10 ? 1 : 0;
+        carry = currentValue >= 10 ? 1 : 0;
 
         pointer1 = pointer1 !== null ? pointer1.next : null;
         pointer2 = pointer2 !== null ? pointer2.next : null;
