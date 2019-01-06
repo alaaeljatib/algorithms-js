@@ -45,6 +45,7 @@ const addTwoLinkedList = (num1, num2) => {
     if (carry > 0) {
         result.addNode(1);
     }
+    
     return result;
 }
 
