@@ -22,8 +22,10 @@ const deserializeTreeHelper = (arr, root, i) => {
   return root;
 }
 
-const arr = [3, 5, 1, 6, 2, 0, 8, undefined, undefined, 7, 4];
-const arr1 = [3, 5, 1, 6, 2, 0, 8, 11, 10, 7, 4];
+module.exports = deserializeTree;
+
+// const arr = [3, 5, 1, 6, 2, 0, 8, undefined, undefined, 7, 4];
+// const arr1 = [3, 5, 1, 6, 2, 0, 8, 11, 10, 7, 4];
 
 
-console.log('tree is ', JSON.stringify(deserializeTree(arr)));
+// console.log('tree is ', JSON.stringify(deserializeTree(arr)));

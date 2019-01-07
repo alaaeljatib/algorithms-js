@@ -1,5 +1,32 @@
-const BinarySearchTree = require('./BinaryTree');
-const deserializeTree = require('./TreeDeserialize');
+class BinaryTreeNode {
+    constructor(value) {
+        this.value = value;
+        this.left = undefined;
+        this.right = undefined;
+    }
+}
+
+const deserializeTree = (arr) => {
+    return deserializeTreeHelper(arr, undefined, 0);
+}
+
+const deserializeTreeHelper = (arr, root, i) => {
+
+
+    if (typeof (arr) === 'undefined' ||
+        (typeof (arr) !== 'undefined' && arr.length === 0)) return undefined;
+
+    if (i < arr.length) {
+
+        root = new BinaryTreeNode(arr[i]);
+
+        root.left = deserializeTreeHelper(arr, root.left, 2 * i + 1);
+
+        root.right = deserializeTreeHelper(arr, root.right, 2 * i + 2);
+    }
+
+    return root;
+}
 
 const lowestCommonAncestor = (root, item1, item2) => {
     if (typeof (root) === 'undefined') return undefined;
@@ -60,28 +87,6 @@ const pathFromRootToX = (root, item) => {
 
 }
 
-const tree = new BinarySearchTree(5);
-tree.add(4);
-tree.add(3);
-tree.add(2);
-tree.add(1);
-tree.add(0);
-tree.add(6);
-tree.add(7);
-tree.add(8);
-tree.add(9);
-tree.add(10);
-tree.add(14);
-tree.add(13);
-tree.add(12);
-tree.add(11);
-tree.add(20);
-tree.add(16);
-tree.add(17);
-tree.add(18);
-tree.add(19);
-tree.add(30);
-// console.log('tree ', JSON.stringify(tree));
 const val1 = 5;
 const val2 = 1;
 
