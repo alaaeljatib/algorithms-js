@@ -29,13 +29,13 @@ const deserializeTreeHelper = (arr, root, i) => {
 }
 
 const lowestCommonAncestor = (root, item1, item2) => {
-    if (typeof (root) === 'undefined') return undefined;
+    if (typeof (root) === 'undefined' || root === null) return undefined;
 
     const pathToItem1 = pathFromRootToX(root, item1);
-    if (typeof (pathToItem1) === 'undefined') return undefined;
+    if (typeof (pathToItem1) === 'undefined' || pathToItem1 === null) return undefined;
 
     const pathToItem2 = pathFromRootToX(root, item2);
-    if (typeof (pathToItem2) === 'undefined') return undefined;
+    if (typeof (pathToItem2) === 'undefined' || pathToItem2 === null) return undefined;
 
     let i_ancestor = undefined,
         j_ancestor = undefined,
@@ -57,27 +57,27 @@ const lowestCommonAncestor = (root, item1, item2) => {
 }
 
 const pathFromRootToX = (root, item) => {
-    if (typeof (root) === 'undefined') return undefined;
+    if (typeof (root) === 'undefined' || root === null) return undefined;
 
     if (item === root.value) {
         return [root.value];
     };
 
-    if (typeof (root.left) !== 'undefined') {
+    if (typeof (root.left) !== 'undefined' && root.left != null) {
 
         const leftPath = pathFromRootToX(root.left, item);
 
-        if (typeof (leftPath) !== 'undefined') {
+        if (typeof (leftPath) !== 'undefined' && leftPath != null) {
             leftPath.unshift(root.value);
             return leftPath;
         };
     }
 
-    if (typeof (root.right) !== 'undefined') {
+    if (typeof (root.right) !== 'undefined' && root.right != null) {
 
         const rightPath = pathFromRootToX(root.right, item);
 
-        if (typeof (rightPath) !== 'undefined') {
+        if (typeof (rightPath) !== 'undefined' && rightPath != null) {
             rightPath.unshift(root.value);
             return rightPath;
         }
