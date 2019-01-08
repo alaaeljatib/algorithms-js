@@ -11,8 +11,9 @@ const quickSort = (arr) => {
 
 }
 
+module.exports = quickSort;
 
-const arr = [6, 55, 90, -1, 12, 2, 14, -5, 33, 6, 0, 123, 2, 3, -23, 6, 8, 3, 1, 6]
+// const arr = [6, 55, 90, -1, 12, 2, 14, -5, 33, 6, 0, 123, 2, 3, -23, 6, 8, 3, 1, 6]
 
 
-console.log('sorted array is ', quickSort(arr), arr.length, quickSort(arr).length);
+// console.log('sorted array is ', quickSort(arr), arr.length, quickSort(arr).length);
