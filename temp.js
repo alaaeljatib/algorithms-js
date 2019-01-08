@@ -1,8 +1,8 @@
-class BinaryTreeNode {
+class TreeNode {
     constructor(value) {
-        this.value = value;
-        this.left = undefined;
-        this.right = undefined;
+        this.val = value;
+        this.left = null;
+        this.right = null;
     }
 }
 
@@ -18,7 +18,7 @@ const deserializeTreeHelper = (arr, root, i) => {
 
     if (i < arr.length) {
 
-        root = new BinaryTreeNode(arr[i]);
+        root = new TreeNode(arr[i]);
 
         root.left = deserializeTreeHelper(arr, root.left, 2 * i + 1);
 
@@ -59,8 +59,8 @@ const lowestCommonAncestor = (root, item1, item2) => {
 const pathFromRootToX = (root, item) => {
     if (typeof (root) === 'undefined' || root === null) return undefined;
 
-    if (item === root.value) {
-        return [root.value];
+    if (item === root.val) {
+        return [root.val];
     };
 
     if (typeof (root.left) !== 'undefined' && root.left != null) {
@@ -68,7 +68,7 @@ const pathFromRootToX = (root, item) => {
         const leftPath = pathFromRootToX(root.left, item);
 
         if (typeof (leftPath) !== 'undefined' && leftPath != null) {
-            leftPath.unshift(root.value);
+            leftPath.unshift(root.val);
             return leftPath;
         };
     }
@@ -78,7 +78,7 @@ const pathFromRootToX = (root, item) => {
         const rightPath = pathFromRootToX(root.right, item);
 
         if (typeof (rightPath) !== 'undefined' && rightPath != null) {
-            rightPath.unshift(root.value);
+            rightPath.unshift(root.val);
             return rightPath;
         }
     }
