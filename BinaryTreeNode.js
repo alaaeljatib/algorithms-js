@@ -1,9 +1,7 @@
 class BinaryTreeNode {
     constructor(value) {
-        if (typeof (value) !== 'undefined' && value !== null) {
-            this.value = value;
-        }
 
+        this.value = value;
         this.left = undefined;
         this.right = undefined;
     }
