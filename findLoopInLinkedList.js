@@ -1,13 +1,15 @@
 const LinkedList = require('./LinkedList');
 
 const findLoopInLinkedList = (lst) => {
+
     if (lst.head === null) return null;
+
     let slow = lst.head,
         fast = lst.head;
+
     while (fast !== null && fast.next !== null) {
         slow = slow.next;
         fast = fast.next.next;
-
         if (slow == fast) break;
     }
 
