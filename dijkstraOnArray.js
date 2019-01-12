@@ -9,52 +9,48 @@ const minimumDistance = (area, rows, cols) => {
     const toCheckQueue = [];
 
     const currentCost = [];
+    const prev = [];
 
     // Initiating the arrays before starting to allocate the N location in memory
     for (let i = 0; i < rows; i++) {
         const currentRow = [];
+        const prevRow = [];
         for (let j = 0; j < cols; j++) {
-            currentRow.push([Number.MAX_SAFE_INTEGER, false]);
+            currentRow.push(Number.MAX_SAFE_INTEGER);
+            prevRow.push([]);
         }
         currentCost.push(currentRow);
+        prev.push(prevRow);
     }
-    currentCost[0][0][1] = true;
 
+    currentCost[0][0] = area[0][0];
     // Let the fun begin!
     toCheckQueue.unshift([0, 0]);
-
-    let target = [];
 
     while (toCheckQueue.length > 0) {
 
         const [toCheckRow, toCheckCol] = toCheckQueue.pop();
-        // console.log('queue', toCheckQueue, 'toCheckRow', toCheckRow, 'toCheckCol', toCheckCol);
 
         for (let i = toCheckRow - 1; i <= toCheckRow + 1; i++) {
             for (let j = toCheckCol - 1; j <= toCheckCol + 1; j++) {
-                if (i >= 0 && j >= 0 && i < rows && j < cols && (i === toCheckRow ^ j === toCheckCol) && !currentCost[i][j][1]) {
-                    console.log(toCheckRow, toCheckCol, 'i', i, 'j', j);
-
+                if (i >= 0 && j >= 0 && i < rows && j < cols && (i === toCheckRow ^ j === toCheckCol) && area[i][j] !== 0 && prev[i][j] !== [i, j]) {
                     const currentAreaValue = area[i][j];
-
                     if (currentAreaValue === 1) {
-                        currentCost[i][j] = [currentAreaValue + currentCost[toCheckRow][toCheckCol][0], true];
+                        if (currentAreaValue + currentCost[toCheckRow][toCheckCol] < currentCost[i][j]) {
+                            currentCost[i][j] = currentAreaValue + currentCost[toCheckRow][toCheckCol];
+                            prev[i][j] = [toCheckRow, toCheckCol];
+                        }
 
                         toCheckQueue.unshift([i, j]);
 
                     } else if (currentAreaValue === 9) { // found it!
-                        target = [i, j];
-                        // console.log('curentCost for i j ', i, j, currentCost[i][j], currentCost[toCheckRow][toCheckCol], toCheckRow, toCheckCol);
-                        const newCurrentCost = currentAreaValue + currentCost[toCheckRow][toCheckCol][0];
 
-                        if (newCurrentCost < currentCost[i][j])
-                            currentCost[i][j] = [newCurrentCost, false];
+                        return currentCost[toCheckRow][toCheckCol];
                     }
                 }
             }
         }
     }
-    if (target.length > 1) return currentCost[target[0]][target[1]][0];
 
     return -1;
 }
