@@ -16,6 +16,6 @@ const insertionSort = (arr) => {
     return arr;
 }
 
-const arr = [100, 3, -2, 5, 8, -7 /*, 6, 1, 12, -14, 30, 21, 45, 7, -5, 90, 10, 9*/ ]
+const arr = [100, 3, -2, 5, 8, -7, 6, 1, 12, -14, 30, 21, 45, 7, -5, 90, 10, 9]
 
 console.log('sorted Array is ', insertionSort(arr));

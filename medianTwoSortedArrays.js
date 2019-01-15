@@ -2,7 +2,6 @@ const quickSort = require('./quickSort');
 
 const medianTwoSortedArrays = (arr1, arr2) => {
     let combinedArray = []
-    let sum = 0;
 
     let i = 0,
         j = 0;
@@ -13,18 +12,15 @@ const medianTwoSortedArrays = (arr1, arr2) => {
 
         if (value1 > value2) {
             combinedArray.push(value2);
-            sum += value2;
             j++;
 
         } else if (value1 < value2) {
             combinedArray.push(value1);
-            sum += value1;
             i++;
 
         } else {
             combinedArray.push(value1);
             combinedArray.push(value2);
-            sum += value1;
             i++;
             j++;
         }
@@ -32,14 +28,11 @@ const medianTwoSortedArrays = (arr1, arr2) => {
 
     while (i < arr1.length) {
         combinedArray.push(arr1[i]);
-
-        sum += arr1[i];
         i++;
     }
 
     while (j < arr2.length) {
         combinedArray.push(arr2[j]);
-        sum += arr2[j];
         j++;
     }
 
