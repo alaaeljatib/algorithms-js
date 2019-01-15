@@ -1,4 +1,4 @@
-const insertionSort = (arr) => {
+const bubbleSort = (arr) => {
     if (typeof (arr) === 'undefined') {
         return [];
     }
@@ -24,4 +24,4 @@ const insertionSort = (arr) => {
 
 const arr = [4, 23, 2, 23, 0, 44, 1, 33, 2, 65, 3, 99, 6, 12, 11, 10, 5]
 
-console.log('sorted array is >>', insertionSort(arr));
+console.log('sorted array is >>', bubbleSort(arr));
