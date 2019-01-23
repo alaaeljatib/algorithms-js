@@ -1,10 +1,11 @@
+const deserializeTree = require('./TreeDeserialize');
+
 const levelOrder = (root) => {
 
-    if (root === null) return null;
+    if (root === null || typeof (root) === 'undefined') return null;
 
-    const result = [
-        [root.val]
-    ];
+    const result = [];
+    if (root.value !== null) result.push([root.value]);
 
     levelOrderHelper(root, result);
 
@@ -13,21 +14,30 @@ const levelOrder = (root) => {
 };
 
 const levelOrderHelper = (root, result) => {
-    if (root === null) return null;
+    if (root === null || typeof (root) === 'undefined') return null;
 
     if (result === null) return null;
 
-    if (root.left !== null || root.right !== null) {
+    if (typeof (root.left) !== 'undefined' || typeof (root.right) !== 'undefined' || root.left !== null || root.right !== null) {
 
         const arrRow = [];
 
-        if (root.left !== null) arrRow.push([root.left.val]);
+        if (typeof (root.left) !== 'undefined' && root.left !== null && root.left.value !== null) arrRow.push(root.left.value);
 
-        if (root.right !== null) arrRow.push([root.right.val]);
+        if (typeof (root.right) !== 'undefined' && root.right !== null && root.right.value !== null) arrRow.push(root.right.value);
 
-        result.push(arrRow);
+        if (arrRow.length > 0) result.push(arrRow);
     }
 
     levelOrderHelper(root.left, result);
     levelOrderHelper(root.right, result);
 }
+
+const arr = [3, 9, 20, null, null, 15, 7];
+
+const root = deserializeTree(arr);
+
+console.log(JSON.stringify(root));
+
+
+console.log('the result is ', levelOrder(root));
