@@ -26,7 +26,9 @@ const maxDepth = (node) => {
 
 const arr = [3, 9, 20, null, null, 15, 7];
 
-const root = deserializeTree(arr);
+const arr2 = [1,2,2,3,3,3,3,4,4,4,4,4,4,null,null,5,5];
+
+const root = deserializeTree(arr2);
 
 console.log(JSON.stringify(root));
 
